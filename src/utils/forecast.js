@@ -1,4 +1,5 @@
 const request = require('request')
+const convertToCelcius = require('./convert')
 
 const forecast = (latitude, longitude, callback) => {
     const url = 'https://api.darksky.net/forecast/8718bab97c6da868fa075638b405cb81/' + latitude + ',' + longitude
@@ -15,11 +16,6 @@ const forecast = (latitude, longitude, callback) => {
                 '% chance of rain. The wind speed is ' + body.currently.windSpeed + 'mph.')
         }
     })
-
-    function convertToCelcius(farenheit) {
-        // console.log(farenheit)
-        return  parseFloat(((farenheit - 32) * 5 / 9).toFixed(1))
-    }
 }
 
 module.exports = forecast
